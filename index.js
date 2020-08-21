@@ -18,12 +18,35 @@ require("dotenv").config();
  */
 const app = express();
 const port = process.env.PORT || "8000";
+
+/**
+ * Session Configuration
+ */
+const session = {
+  secret: "LoxodontaElephasMammuthusPalaeoloxodonPrimelephas",
+  cookie: {},
+  resave: false,
+  saveUninitialized: false
+};
+
+if (app.get("env") === "production") {
+  // serve secure cookies, requires HTTPS
+  session.cookie.secure = true;
+}
+
+/**
+ * Passport Configuration
+ */
+
+
 /**
  *  App Configuration
  */
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(expressSession(session));
 
 /**
  * Routes Definitions
