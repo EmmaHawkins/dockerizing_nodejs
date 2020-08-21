@@ -6,4 +6,4 @@ Tutorial for dockerizing a nodejs app
 
 2) Once installation has completed, run *npm run dev*
 
-3) In another termial, run npm run ui and a new browser window will appear and display the application.
+3) In another termial, run *npm run ui* and a new browser window will appear and display the application.
