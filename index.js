@@ -11,6 +11,8 @@ const expressSession = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 
+const authRouter = require('./auth');
+
 require("dotenv").config();
 
 /**
@@ -70,6 +72,20 @@ app.use(expressSession(session));
 passport.use(strategy);
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+/**
+ * Router Mounting
+ */
+
+ app.use("/", authRouter);
 
 /**
  * Routes Definitions
